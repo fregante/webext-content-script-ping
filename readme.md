@@ -11,49 +11,40 @@
 npm install --save webext-content-script-ping
 ```
 
-If you're using a bundler:
-
 ```js
 import {pingContentScript} from 'webext-content-script-ping';
 ```
 
 ## Usage
 
-1. From `background.js`, ping a tab id:
-	
-	```js
-	/* globals pingContentScript */
-	pingContentScript(tabId).then(() => {
-		// the content script was loaded!
-	}, () => {
-		// the content script was NOT loaded!
-	});
-	```
+From `background.js`, ping a tab id:
 
-2. Include `webext-content-script-ping` in your manifest.json, both as a `background` script and `content_script`
+```js
+/* globals pingContentScript */
+pingContentScript(tabId).then(() => {
+	// the content script was loaded!
+}, () => {
+	// the content script was NOT loaded!
+});
+```
 
-	```json
-	{
-		"background": {
-		  "scripts": [
-			"node_modules/webext-content-script-ping/webext-content-script-ping.js",
-			"background.js"
-		  ],
-		  "persistent": false
-		},
-		"content_scripts": [
-			{
-				"matches": [
-					"https://www.google.com*",
-				],
-				"js": [
-					"node_modules/webext-content-script-ping/index.js",
-					"content.js"
-				]
-			}
-		]
-	}
-	```
+### Plain files
+
+1. Include the file `webext-content-script-ping.js` in your manifest.json, both as a `background` script and `content_script`.
+2. In your background script **only**, run `pingContentScript(tabId)`
+
+### With a bundler
+
+```js
+// background.js
+import pingContentScript from 'webext-content-script-ping';
+pingContentScript(tabId);
+```
+
+```js
+// content.js
+import 'webext-content-script-ping'; // this only responds to the ping
+```
 
 ## API
 
