@@ -48,17 +48,17 @@ import 'webext-content-script-ping'; // this only responds to the ping
 
 ## API
 
-#### pingContentScript(tabId)
+#### pingContentScript(tab)
 
 Returns a Promise that succeeds if the content was loaded, fails if it wasn't.
 
 It has an internal timeout of 300ms.
 
-##### tabId
+##### tab
 
-Type: `number`  
+Type: `Tab` or `number`
 
-The Tab's id as defined here: https://developer.chrome.com/extensions/tabs#type-Tab
+A `Tab` object or just its `id` as defined here: https://developer.chrome.com/extensions/tabs#type-Tab
 
 ## Related
 

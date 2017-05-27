@@ -1,9 +1,9 @@
 // https://github.com/bfred-it/webext-content-script-ping
 
-function pingContentScript(tabId) {
+function pingContentScript(tab) {
 	return new Promise((resolve, reject) => {
 		setTimeout(reject, 300);
-		chrome.tabs.sendMessage(tabId, chrome.runtime.id, {
+		chrome.tabs.sendMessage(tab.id || tab, chrome.runtime.id, {
 			// Only the main frame is necessary;
 			// if that isn't loaded, no other iframe is
 			frameId: 0
