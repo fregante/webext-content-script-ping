@@ -1,9 +1,6 @@
-# webext-content-script-ping
+# webext-content-script-ping [![Travis build status](https://api.travis-ci.org/bfred-it/webext-content-script-ping.svg?branch=master)](https://travis-ci.org/bfred-it/webext-content-script-ping) [![npm version](https://img.shields.io/npm/v/webext-content-script-ping.svg)](https://www.npmjs.com/package/webext-content-script-ping)
 
 > One-file interface to detect whether your content script have loaded.
-
-[![Travis build status](https://api.travis-ci.org/bfred-it/webext-content-script-ping.svg?branch=master)](https://travis-ci.org/bfred-it/webext-content-script-ping)
-[![npm version](https://img.shields.io/npm/v/webext-content-script-ping.svg)](https://www.npmjs.com/package/webext-content-script-ping)
 
 ## Install
 
