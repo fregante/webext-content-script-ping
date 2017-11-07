@@ -1,6 +1,6 @@
 {
   "name": "webext-content-script-ping",
-  "version": "1.1.0",
+  "version": "1.1.1-0",
   "description": "One-file interface to detect whether your content script have loaded.",
   "license": "MIT",
   "repository": "bfred-it/webext-content-script-ping",
