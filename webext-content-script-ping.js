@@ -16,10 +16,8 @@ function pingContentScript(tab) {
 		}, ([hasScriptAlready]) => {
 			if (chrome.runtime.lastError) {
 				reject(chrome.runtime.lastError);
-			} else if (hasScriptAlready) {
-				resolve();
 			} else {
-				reject();
+				resolve(Boolean(hasScriptAlready));
 			}
 		});
 	});
