@@ -1,14 +1,22 @@
 // https://github.com/bfred-it/webext-content-script-ping
 
+/**
+ * Ping responder
+ */
+document.__webextContentScriptLoaded = true;
+
+/**
+ * Pinger
+ */
 function pingContentScript(tab) {
 	return new Promise((resolve, reject) => {
-		setTimeout(reject, 300);
-		chrome.tabs.sendMessage(tab.id || tab, chrome.runtime.id, {
-			// Only the main frame is necessary;
-			// if that isn't loaded, no other iframe is
-			frameId: 0
-		}, response => {
-			if (response === chrome.runtime.id) {
+		chrome.tabs.executeScript(tab.id || tab, {
+			code: 'document.__webextContentScriptLoaded',
+			runAt: 'document_start'
+		}, ([hasScriptAlready]) => {
+			if (chrome.runtime.lastError) {
+				reject(chrome.runtime.lastError);
+			} else if (hasScriptAlready) {
 				resolve();
 			} else {
 				reject();
@@ -17,15 +25,6 @@ function pingContentScript(tab) {
 	});
 }
 
-if (!chrome.runtime.getBackground) {
-	// Respond to pings
-	chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-		if (request === chrome.runtime.id) {
-			sendResponse(chrome.runtime.id);
-		}
-	});
-}
-
-if (typeof exports === 'object') {
-	exports.pingContentScript = pingContentScript;
+if (typeof module === 'object') {
+	module.exports = pingContentScript;
 }
