@@ -27,8 +27,27 @@ pingContentScript(tabId).then(() => {
 
 ### Plain files
 
-1. Include the file `webext-content-script-ping.js` in your manifest.json, both as a `background` script and `content_script`.
-2. In your background script **only**, run `pingContentScript(tabId)`
+1. In your `manifest.json`, include the file as background and as content script:
+
+	```js
+	{
+		"background": {
+			"scripts": [
+				"webext-content-script-ping.js"
+			]
+		},
+		"content_scripts": [
+			{
+				"js": [
+					"webext-content-script-ping.js",
+					"content.js"
+				]
+			}
+		]
+	}
+	```
+
+2. In your background script **only**, run `pingContentScript(tabId)` as needed
 
 ### With a bundler
 
