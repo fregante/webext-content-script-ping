@@ -13,11 +13,11 @@ function pingContentScript(tab) {
 		chrome.tabs.executeScript(tab.id || tab, {
 			code: 'document.__webextContentScriptLoaded',
 			runAt: 'document_start'
-		}, ([hasScriptAlready]) => {
+		}, hasScriptAlready => {
 			if (chrome.runtime.lastError) {
 				reject(chrome.runtime.lastError);
 			} else {
-				resolve(Boolean(hasScriptAlready));
+				resolve(Boolean(hasScriptAlready[0]));
 			}
 		});
 	});
