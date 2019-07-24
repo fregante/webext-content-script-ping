@@ -2,28 +2,28 @@
   "name": "webext-content-script-ping",
   "version": "2.0.1",
   "description": "One-file interface to detect whether your content script have loaded.",
-  "license": "MIT",
-  "repository": "bfred-it/webext-content-script-ping",
-  "author": "Federico Brigante <github@bfred.it> (bfred.it)",
   "keywords": [
     "browser",
-    "webext",
     "chrome",
-    "extension",
     "content script",
-    "ping",
-    "test",
     "detect",
     "detection",
-    "firefox"
+    "extension",
+    "firefox",
+    "ping",
+    "test",
+    "webext"
   ],
-  "main": "webext-content-script-ping.js",
+  "repository": "fregante/webext-content-script-ping",
+  "license": "MIT",
+  "author": "Federico Brigante <opensource@bfred.it> (bfred.it)",
   "files": [
     "webext-content-script-ping.js"
   ],
+  "main": "webext-content-script-ping.js",
   "scripts": {
-    "watch": "onchange '*.js' --initial -- xo --fix",
-    "test": "xo"
+    "test": "xo",
+    "watch": "onchange '*.js' --initial -- xo --fix"
   },
   "xo": {
     "envs": [

@@ -1,4 +1,4 @@
-// https://github.com/bfred-it/webext-content-script-ping
+// https://github.com/fregante/webext-content-script-ping
 
 /**
  * Ping responder
